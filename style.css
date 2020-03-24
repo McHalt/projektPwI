@@ -62,6 +62,8 @@ li{
     height: 50px;
     border-bottom: 2px solid #ccc;
     font-size: 25px;
+    transition: 0.5s;
+    color: #eee;
 }
 
 li:first-child{
@@ -73,13 +75,12 @@ li a{
     height: 100%;
     width: 100%;
     text-decoration: none;
-    color: #eee;
     justify-content: center;
     align-items: center;
-    transition: 0.5s;
+    color: inherit;
 }
 
-li a:hover{
+li:hover{
     background-color: #ccc;
     color: #1b1b1b;
 }
@@ -162,7 +163,7 @@ li a:hover{
     color: #ccc;
 }
 
-.main__databases__list section:not(.databases__add) a{
+.main__databases__list section:not(.databases) a{
     display: flex;
     width: 100%;
     height: calc((100% - 48px)/3);
@@ -171,28 +172,37 @@ li a:hover{
     align-items: center;
 }
 
-.main__databases__list section:not(.databases__add) a:nth-child(even){
+.main__databases__list section:not(.databases) a:nth-child(even){
     background-color: #2b2b2b;
 }
 
-.main__databases__list section:not(.databases__add) a:nth-child(odd){
+.main__databases__list section:not(.databases) a:nth-child(odd){
     background-color: #1b1b1b;
 }
 
-.databases__add h2{
+.databases h2{
     display: flex;
     height: 100%;
     width: 100%;
     padding: 0;
 }
 
-.databases__add h2 a{
+.databases h2 a{
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #1b1b1b;
+}
+
+.main__databases__list section:first-child h2{
+    padding: 0;
+    height: 100%;
+}
+
+.main__databases__list section:first-child a{
+    height: 100%;
 }
 
 .main__users__list{
@@ -250,13 +260,13 @@ button{
     cursor: pointer;
 }
 
-.main__users__add{
+.main__users{
     display: flex;
     height: 100%;
     width: 100%;
 }
 
-.main__users__add form{
+.main__users form{
     display: flex;
     height: 100%;
     width: 100%;
@@ -265,14 +275,80 @@ button{
     flex-direction: column;
 }
 
-.main__users__add input{
+.main__users input{
     height: 75px;
     width: 400px;
     font-size: 25px;
 }
 
-.main__users__add button{
+.main__users input[type=checkbox]{
+    display: none;
+}
+
+.main__users button{
     height: 75px;
     width: 400px;
     font-size: 25px;
+}
+
+.main__users div{
+    display: flex;
+}
+
+.main__users div > button{
+    border: 2px solid #eee;
+    width: 50px;
+}
+
+.main__users div > button:not(:first-child){
+    border-left: none;
+}
+
+.main__users button.checked{
+    background-color: #005005;
+}
+
+:hover, :active, :focus{
+    outline: 0;
+    outline: none;
+}
+
+.main__users__show{
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 200%;
+    text-align: center;
+}
+
+.main__users__show img{
+    width: 10vw;
+}
+
+table{
+    border-collapse: collapse;
+    margin-left: 15px;
+}
+
+th{
+    color: #ccc;
+}
+
+td{
+    border: 1px solid #000;
+    padding: 10px;
+    color: #ccc!important;
+}
+
+.main__databases__add{
+    padding: 15px;
+}
+
+.addField{
+    background: url('add.svg');
+    width: 22px;
+    height: 22px;
+    border: none;
+    display: block;
+    margin: 15px;
 }

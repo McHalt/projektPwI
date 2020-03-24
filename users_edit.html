@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dodaj użytkownika :: SQL Admin</title>
+    <title>Edytuj użytkownika :: SQL Admin</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,22 +24,21 @@
         <li><a href="index.html">Wyloguj</a></li>
     </ul>
 </nav>
-<main class="main__users main__users__add">
+<main class="main__users main__users__edit">
     <form action="#">
-        <input type="text" placeholder="Login">
-        <input type="email" placeholder="Adres e-mail">
-        <input type="password" placeholder="Hasło">
-        <input type="checkbox" name="permissions[1]" id="permissions_1">
-        <input type="checkbox" name="permissions[2]" id="permissions_2">
+        <input type="text" placeholder="Login" value="Login">
+        <input type="email" placeholder="Adres e-mail" value="mail@mail.com">
+        <input type="checkbox" name="permissions[1]" id="permissions_1" checked>
+        <input type="checkbox" name="permissions[2]" id="permissions_2" checked>
         <input type="checkbox" name="permissions[4]" id="permissions_4">
         <input type="checkbox" name="permissions[8]" id="permissions_8">
         <div>
-            <button id="button_permissions_1" class="main__users__add__permissionsButtons"></button>
-            <button id="button_permissions_2" class="main__users__add__permissionsButtons"></button>
-            <button id="button_permissions_4" class="main__users__add__permissionsButtons"></button>
-            <button id="button_permissions_8" class="main__users__add__permissionsButtons"></button>
+            <button id="button_permissions_1" class="main__users__edit__permissionsButtons checked"></button>
+            <button id="button_permissions_2" class="main__users__edit__permissionsButtons checked"></button>
+            <button id="button_permissions_4" class="main__users__edit__permissionsButtons"></button>
+            <button id="button_permissions_8" class="main__users__edit__permissionsButtons"></button>
         </div>
-        <button>Dodaj</button>
+        <button>Zapisz</button>
     </form>
 </main>
 <script>
@@ -51,7 +50,7 @@
             evt.preventDefault();
         });
     }
-    let buttons = document.querySelectorAll(".main__users__add__permissionsButtons");
+    let buttons = document.querySelectorAll(".main__users__edit__permissionsButtons");
     buttons.forEach(listenPermissionsButtons);
 </script>
 </body>

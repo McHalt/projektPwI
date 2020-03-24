@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Wykonaj SQL :: SQL Admin</title>
+    <title>Pokaż tabelę :: SQL Admin</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,9 +24,30 @@
         <li><a href="index.html">Wyloguj</a></li>
     </ul>
 </nav>
-<main class="main__sql">
-    <textarea placeholder="Wpisz tu zapytanie..."></textarea>
-    <button>Wykonaj</button>
+<main class="main__tables__show">
+    <h2 style="color: #eee; padding-left: 15px;">Tabela: nazwa</h2>
+    <table>
+        <tr>
+            <th>Nazwa</th>
+            <th>Typ</th>
+            <th>Wartość</th>
+        </tr>
+        <tr>
+            <td>Pole 1</td>
+            <td>varchar(255)</td>
+            <td>Lorem ipsum</td>
+        </tr>
+        <tr>
+            <td>Pole 2</td>
+            <td>varchar(255)</td>
+            <td>Lorem ipsum</td>
+        </tr>
+        <tr>
+            <td>Pole 3</td>
+            <td>varchar(255)</td>
+            <td>Lorem ipsum</td>
+        </tr>
+    </table>
 </main>
 </body>
 </html>

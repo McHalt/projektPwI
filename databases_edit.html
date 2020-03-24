@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edytuj bazę :: SQL Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>
+        <a href="index-afterLogin.html">
+            <img src="logo.png" alt="logo" class="logo">
+        </a>
+    </h1>
+</header>
+<nav>
+    <ul>
+        <li><a href="databases.html">Bazy danych</a></li>
+        <li><a href="users.html">Użytkownicy</a></li>
+        <li><a href="sql.html">Zapytanie SQL</a></li>
+        <li><a href="index.html">Wyloguj</a></li>
+    </ul>
+</nav>
+<main class="main__databases__add">
+    <form action="">
+        <input type="text" name="db_name" placeholder="Nazwa bazy">
+        <p>Tabele</p>
+        <button style="background: url('add.svg'); border: none; width: 22px; height: 22px;" id="addTable"></button>
+        <button style="display: block; padding: 10px 25px; margin-top: 25px;">Dodaj</button>
+    </form>
+</main>
+<script>
+    function addField(e){
+        let div = document.createElement("div");
+        let input1 = document.createElement("input");
+        let input2 = document.createElement("input");
+        let input3 = document.createElement("input");
+        let parentName = e.target.parentNode.childNodes[0].name;
+        input1.placeholder = "Nazwa pola";
+        input1.required = true;
+        input1.name = parentName + "[" + document.querySelectorAll('.' + parentName.replace('[', '_').replace(']', '')).length + ']["name"]';
+        input2.placeholder = "Typ pola";
+        input2.required = true;
+        input3.placeholder = "Długość";
+        div.className = parentName.replace('[', '_').replace(']', '');
+        div.style.marginLeft = "15px";
+        div.style.marginTop = "5px";
+        div.appendChild(input1);
+        div.appendChild(input2);
+        div.appendChild(input3);
+        e.target.parentNode.insertBefore(div, e.target);
+        e.preventDefault();
+    }
+
+    function addTable(e){
+        let div = document.createElement("div");
+        let input = document.createElement("input");
+        let button = document.createElement("button");
+        button.className = "addField";
+        button.addEventListener('click', addField);
+        input.type = "text";
+        input.placeholder = "Nazwa tabeli";
+        input.className = "db_table";
+        input.name = "db_table[" + document.querySelectorAll(".db_table").length + "]";
+        div.appendChild(input);
+        div.appendChild(button);
+        e.target.parentNode.insertBefore(div, e.target);
+        e.preventDefault();
+    }
+    document.querySelector("#addTable").addEventListener('click', addTable);
+</script>
+</body>
+</html>

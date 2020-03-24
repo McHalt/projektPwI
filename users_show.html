@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Wykonaj SQL :: SQL Admin</title>
+    <title>Pokaż użytkownika :: SQL Admin</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,9 +24,19 @@
         <li><a href="index.html">Wyloguj</a></li>
     </ul>
 </nav>
-<main class="main__sql">
-    <textarea placeholder="Wpisz tu zapytanie..."></textarea>
-    <button>Wykonaj</button>
+<main class="main__users main__users__show">
+    <img src="user.svg" alt="">
+    <p>Login: &lt;Login&gt;</p>
+    <p>Adres e-mail: &lt;email&gt;</p>
+    <section>
+        <p>Uprawnienia: </p>
+        <div>
+            <button id="button_permissions_1" class="main__users__edit__permissionsButtons checked"></button>
+            <button id="button_permissions_2" class="main__users__edit__permissionsButtons checked"></button>
+            <button id="button_permissions_4" class="main__users__edit__permissionsButtons"></button>
+            <button id="button_permissions_8" class="main__users__edit__permissionsButtons"></button>
+        </div>
+    </section>
 </main>
 </body>
 </html>
