@@ -1,1 +1,1 @@
-live: https://mchalt.github.io/projektPwI
+live: http://pwi.kchroscinski.pl
