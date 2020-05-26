@@ -1,0 +1,7 @@
+<main class="main__index">
+    {% if user.isLogged %}
+        {{ include('page/homeLogged.twig') }}
+    {% else %}
+        {{ include('page/homeNotLogged.twig') }}
+    {% endif %}
+</main>

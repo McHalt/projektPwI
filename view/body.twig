@@ -1,0 +1,11 @@
+<body>
+    <header>
+        <h1>
+            <a href="/">
+                <img src="/res/img/logo.png" alt="logo" class="logo">
+            </a>
+        </h1>
+    </header>
+    {{ include('nav.twig') }}
+    {{ include( 'page/'~config.page|lower~'.twig' ) }}
+</body>

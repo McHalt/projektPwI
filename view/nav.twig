@@ -1,0 +1,9 @@
+<nav>
+    <ul>
+        {% if user.isLogged %}
+            {{ include('navLogged.twig') }}
+        {% else %}
+            {{ include('navNotLogged.twig') }}
+        {% endif %}
+    </ul>
+</nav>
