@@ -4,7 +4,6 @@ session_start();
 
 require_once 'vendor/autoload.php';
 require_once 'controller/Page.php';
-require_once 'controller/User.php';
 
 $page = empty($_GET['page']) ? 'home' : $_GET['page'];
 
@@ -29,8 +28,6 @@ $config = [
     , 'page' => $page
 ];
 
-$User = new User;
-
 $loader = new \Twig\Loader\FilesystemLoader('view');
 $twig = new \Twig\Environment($loader, [
     'cache' => 'cache',
@@ -43,5 +40,5 @@ $config = array_merge($config, $Page->getBasicConfig());
 echo $twig->render('html.twig', [
       'config'  => $config
     , 'libs'    => $libs
-    , 'user'    => $User->getInfo()
+    , 'user'    => $Page->User->getInfo()
 ]);

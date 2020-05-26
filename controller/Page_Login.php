@@ -6,10 +6,10 @@ class Page_Login extends Page
 
     public function __construct()
     {
+        parent::__construct();
+        if($this->User->isLogged) header('Location: /');
         if(!empty($_POST['loginFormSent'])){
-            require_once "User.php";
-            $User = new User;
-            $User->login(htmlspecialchars($_POST['email']), htmlspecialchars($_POST['password']));
+            $this->User->login(htmlspecialchars($_POST['email']), htmlspecialchars($_POST['password']));
         }
     }
 }

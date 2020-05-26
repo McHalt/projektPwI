@@ -1,7 +1,7 @@
 <?php
 class User
 {
-    private bool $isLogged = false;
+    public bool $isLogged = false;
 
     public function __construct()
     {
