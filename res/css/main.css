@@ -149,6 +149,7 @@ li:hover{
 .main__databases__list section{
     min-height: 200px;
     border: 2px solid #ccc;
+    max-height: 30vh;
 }
 
 .main__databases__list h2{
@@ -351,4 +352,31 @@ td{
     border: none;
     display: block;
     margin: 15px;
+}
+
+.message{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 25px;
+    border-radius: 15px;
+    height: 75px;
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.message_error{
+    background-color: #f8d7da;
+    border: 2px solid #f5c6cb;
+    color: #721c24;
+}
+
+.message_info{
+    background-color: #d1ecf1;
+    border: 2px solid #bee5eb;
+    color: #0c5460;
 }

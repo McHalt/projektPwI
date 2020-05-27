@@ -26,22 +26,18 @@ class User
         return get_object_vars($this);
     }
 
-    public function login(string $email, string $password):bool
+    public function login():void
     {
-        if($this->isLogged) header('Location: /');
-        if($email == "przykladowy@email.com" && $password == "admin123"){
-            $this->isLogged = true;
-            $this->saveUserToSession();
-            if($this->isLogged) header('Location: /');
-            return true;
-        }
+        $this->isLogged = true;
         $this->saveUserToSession();
-        return false;
+        header('Location: /');
     }
 
     public function logout():void
     {
+        $messages = Tool::loadMessagesFromSession();
         $_SESSION = array();
+        Tool::saveMessagesToSession($messages);
         header('Location: /');
     }
 }

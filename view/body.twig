@@ -6,6 +6,16 @@
             </a>
         </h1>
     </header>
+    {% for error in messages.errors %}
+        <div class="message message_error">
+            {{ error }}
+        </div>
+    {% endfor %}
+    {% for info in messages.info %}
+        <div class="message message_info">
+            {{ info }}
+        </div>
+    {% endfor %}
     {{ include('nav.twig') }}
     {{ include( 'page/'~config.page|lower~'.twig' ) }}
 </body>
