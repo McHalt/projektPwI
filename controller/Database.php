@@ -17,8 +17,30 @@ class Database
 
     }
 
-    public function query($sql):PDOStatement
+    private function prepare(string $sql, array $parameters = [], array $values = [], array $dataTypes = []){
+        if(!(count($parameters) == count($values) && count($values) == count($dataTypes))){
+            return false;
+        }
+        $sth = $this->pdo->prepare($sql);
+        for($i = 0; $i < count($parameters); $i++)
+        {
+            $sth->bindValue($parameters[$i], $values[$i], $dataTypes[$i]);
+        }
+        return $sth;
+    }
+
+    public function query(string $sql, array $parameters = [], array $values = [], array $dataTypes = [])
     {
-        return $this->pdo->query($sql);
+        $sth = $this->prepare($sql, $parameters, $values, $dataTypes);
+        if(!$sth) return false;
+        $sth->execute();
+        return $sth->fetchAll();
+    }
+
+    public function execute(string $sql, array $parameters = [], array $values = [], array $dataTypes = [])
+    {
+        $sth = $this->prepare($sql, $parameters, $values, $dataTypes);
+        if(!$sth) return false;
+        return $sth->execute();
     }
 }

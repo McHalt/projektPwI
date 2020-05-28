@@ -1,0 +1,13 @@
+<main class="main__databases__list">
+    <section class="databases__add">
+        <h2><a href="/databases/add">Dodaj</a></h2>
+    </section>
+    {% for db in pageVars.dbList %}
+        <section>
+            <header><h2>{{ db.name }}</h2></header>
+            <a href="/databases/show/{{ db.id }}">Zobacz</a>
+            <a href="/databases/edit/{{ db.id }}">Modyfikuj</a>
+            <a href="/databases/delete/{{ db.id }}">Usuń</a>
+        </section>
+    {% endfor %}
+</main>

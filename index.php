@@ -12,7 +12,7 @@ $d = new Database;
 
 $page = empty($_GET['page']) ? 'home' : $_GET['page'];
 
-$libs = ['css' => ['main.css'], 'js' => []];
+$libs = ['css' => ['main.css'], 'js' => ['main.js']];
 
 $pageControllerPath = 'controller/Page_' . ucfirst($page) . '.php';
 

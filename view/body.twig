@@ -18,4 +18,7 @@
     {% endfor %}
     {{ include('nav.twig') }}
     {{ include( 'page/'~config.page|lower~'.twig' ) }}
+    {% for js in libs.js %}
+        <script src="/res/js/{{ js }}"></script>
+    {% endfor %}
 </body>

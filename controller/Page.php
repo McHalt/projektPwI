@@ -43,6 +43,8 @@ abstract class Page
 
     function getAdditionalVars():array
     {
-        return [];
+        return [
+            'args' => !empty($_GET['args']) ? explode('/', $_GET['args']) : array('list')
+        ];
     }
 }
