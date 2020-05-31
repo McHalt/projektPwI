@@ -34,7 +34,7 @@ class Database
         $sth = $this->prepare($sql, $parameters, $values, $dataTypes);
         if(!$sth) return false;
         $sth->execute();
-        return $sth->fetchAll();
+        return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function execute(string $sql, array $parameters = [], array $values = [], array $dataTypes = [])

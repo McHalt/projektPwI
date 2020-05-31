@@ -2,6 +2,7 @@
 class User
 {
     public bool $isLogged = false;
+    public int $id = -1;
 
     public function __construct()
     {
@@ -29,6 +30,8 @@ class User
     public function login():void
     {
         $this->isLogged = true;
+        $this->id = $_SESSION['user_id'];
+        unset($_SESSION['user_id']);
         $this->saveUserToSession();
         header('Location: /');
     }
@@ -37,7 +40,6 @@ class User
     {
         $messages = Tool::loadMessagesFromSession();
         $_SESSION = array();
-        Tool::saveMessagesToSession($messages);
-        header('Location: /');
+        Tool::redirectToUrl("/", $messages);
     }
 }

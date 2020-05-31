@@ -50,4 +50,3 @@ echo $twig->render('html.twig', [
     , 'messages'    => $Page->getMessages()
     , 'pageVars'    => $Page->getAdditionalVars()
 ]);
-

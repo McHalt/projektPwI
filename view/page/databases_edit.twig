@@ -1,7 +1,20 @@
 <main class="main__databases__add">
-    <form>
-        <input type="text" name="db_name" placeholder="Nazwa bazy">
+    <form action="/databases/edit/{{ pageVars.db.id }}/save" method="POST">
+        <input type="text" name="db_name" placeholder="Nazwa bazy" value="{{ pageVars.db.name }}">
         <p>Tabele</p>
+        {% for i,table in pageVars.db.tables %}
+        <div><input
+            type="text" placeholder="Nazwa tabeli" class="db_table" name="db_table[{{ i }}][name]" value="{{ table.name }}">
+            {% for i2,field in table.fields %}
+            <div class="db_table_{{ i }}" style="margin-left: 15px; margin-top: 5px;">
+                <input placeholder="Nazwa pola" required="" name="db_table[{{ i }}][{{ i2 }}][name]" value="{{ field.name }}"><input
+                placeholder="Typ pola" required="" name="db_table[{{ i }}][{{ i2 }}][type]" value="{{ field.type }}"><input
+                placeholder="Długość"  name="db_table[{{ i }}][{{ i2 }}][length]" value="{{ field.length }}">
+            </div>
+            {% endfor %}
+            <button class="addField"></button>
+        </div>
+        {% endfor %}
         <button style="background: url('/res/img/add.svg'); border: none; width: 22px; height: 22px;" id="addTable"></button>
         <button style="display: block; padding: 10px 25px; margin-top: 25px;">Dodaj</button>
     </form>

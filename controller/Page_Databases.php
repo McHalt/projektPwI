@@ -20,6 +20,16 @@ class Page_Databases extends Page
                         $this->messages['errors'][] = "Nie udało się usunąć bazy o id $args[1]";
                     }
                     Tool::redirectToUrl('/databases', $this->getMessages());
+                case 'edit':
+                    if((empty($args[2]) || $args[2] != 'save') && (empty($args[1]) || $args[1] != 'save')){
+                        break;
+                    }
+                    if($args[1] == 'save'){
+                        $this->Model->createDb($_POST['db_name'], $_POST['db_table']);
+                    }else if($args[2] == 'save'){
+                        $this->Model->modifyDb($_POST['db_name'], $_POST['db_table']);
+                    }
+                    Tool::redirectToUrl('/databases', $this->getMessages());
             }
         }
     }
@@ -28,6 +38,17 @@ class Page_Databases extends Page
     {
         $info = parent::getAdditionalVars();
         $info['dbList'] = $this->Model->getDbList();
+        if(!empty($_GET['args']))
+        {
+            $args = explode('/', $_GET['args']);
+            switch($args[0])
+            {
+                case 'edit':
+                    if(strlen($args[1]) != strlen((int) $args[1])) break;
+                    $info['db'] = $this->Model->getDbInfo($args[1]);
+                    break;
+            }
+        }
         return $info;
     }
 }
