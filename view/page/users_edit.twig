@@ -1,0 +1,8 @@
+<main class="main__users main__users__add">
+    <form action="/users/edit/{{ pageVars.user.id }}/save" method="POST">
+        <input type="text" placeholder="Login" name="name" value="{{ pageVars.user.name }}">
+        <input type="email" placeholder="Adres e-mail" name="email" value="{{ pageVars.user.email }}">
+        <input type="password" placeholder="Hasło" name="password">
+        <button>Dodaj</button>
+    </form>
+</main>

@@ -1,0 +1,14 @@
+<main class="main__users main__users__permissions">
+    <form action="/users/permissions/{{ pageVars.user.id }}/save" method="POST">
+        {% for db in pageVars.dbList %}
+            <input type="hidden" name="db[{{ db.id }}][is]" value="1">
+            {% if db.permissions == 1 %}
+                <input type="checkbox" name="db[{{ db.id }}][checked]" id="db[{{ db.id }}]" checked>
+            {% else %}
+                <input type="checkbox" name="db[{{ db.id }}][checked]" id="db[{{ db.id }}]">
+            {% endif %}
+            <label for="db[{{ db.id }}]">{{ db.name }}</label>
+        {% endfor %}
+        <button>Zapisz</button>
+    </form>
+</main>

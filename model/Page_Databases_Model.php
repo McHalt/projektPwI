@@ -2,26 +2,11 @@
 
 class Page_Databases_Model extends Page_Model
 {
-    private array $dbList;
-
-    public function getDbList():array
-    {
-        if(!empty($this->dbList)){
-            return $this->dbList;
-        }
-        $result = $this->db->query("SELECT DISTINCT * FROM dbs"); //DO POPRAWY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        $resArr = [];
-        foreach ($result as $db) {
-            $resArr[]['id'] = $db['id'];
-            $resArr[count($resArr)-1]['name'] = $db['name'];
-        }
-        $this->dbList = $resArr;
-        return $this->dbList;
-    }
-
     public function deleteDb(int $id):bool
     {
-        $query = "DELETE FROM dbs WHERE id = :id";
+        $query = 'DELETE FROM users_to_databases WHERE database_id = :id';
+        $this->db->execute($query, [':id'], [$id], [PDO::PARAM_INT]);
+        $query = 'DELETE FROM dbs WHERE id = :id';
         return $this->db->execute($query, [':id'], [$id], [PDO::PARAM_INT]);
     }
 
@@ -66,6 +51,13 @@ class Page_Databases_Model extends Page_Model
         [$dbName, date('Y-m-d'), $User->id],
         [PDO::PARAM_STR, PDO::PARAM_STR, PDO::PARAM_INT]);
         $this->modifyDb($dbName, $dbSchema);
+        $qry = 'INSERT INTO users_to_databases VALUES (:user, (SELECT id FROM dbs WHERE name = :dbName ORDER BY name DESC LIMIT 1))';
+        $this->db->execute(
+            $qry,
+            [':user', ':dbName'],
+            [$User->id, $dbName],
+            [PDO::PARAM_INT, PDO::PARAM_STR]
+        );
         return true;
     }
 

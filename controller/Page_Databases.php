@@ -43,6 +43,7 @@ class Page_Databases extends Page
             $args = explode('/', $_GET['args']);
             switch($args[0])
             {
+                case 'show':
                 case 'edit':
                     if(strlen($args[1]) != strlen((int) $args[1])) break;
                     $info['db'] = $this->Model->getDbInfo($args[1]);

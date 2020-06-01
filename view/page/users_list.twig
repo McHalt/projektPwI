@@ -1,0 +1,14 @@
+<main class="main__users__list">
+    <section class="user__row">
+        <img src="/res/img/user.svg" alt="user icon">
+        <h2><a href="/users/add">Dodaj użytkownika</a></h2>
+    </section>
+    {% for user in pageVars.usersList %}
+    <section class="user__row">
+        <img src="/res/img/user.svg" alt="user icon">
+        <h2>
+            {{ user.name }}&nbsp;|&nbsp;{{ user.email }}&nbsp;|&nbsp;<a href="/users/edit/{{ user.id }}">Edytuj</a>&nbsp;|&nbsp;<a href="/users/delete/{{ user.id }}">Usuń</a>&nbsp;|&nbsp;<a href="/users/permissions/{{ user.id }}">Uprawnienia</a>
+        </h2>
+    </section>
+    {% endfor %}
+</main>

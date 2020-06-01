@@ -1,0 +1,19 @@
+<main class="main__databases__add">
+    <form action="" method="POST">
+        <input type="text" name="db_name" placeholder="Nazwa bazy" value="{{ pageVars.db.name }}" disabled>
+        <p>Tabele</p>
+        {% for i,table in pageVars.db.tables %}
+            <div><input
+                        type="text" placeholder="Nazwa tabeli" class="db_table" name="db_table[{{ i }}][name]" value="{{ table.name }}" disabled>
+                {% for i2,field in table.fields %}
+                    <div class="db_table_{{ i }}" style="margin-left: 15px; margin-top: 5px;">
+                        <input placeholder="Nazwa pola" required="" name="db_table[{{ i }}][{{ i2 }}][name]" value="{{ field.name }}" disabled><input
+                                placeholder="Typ pola" required="" name="db_table[{{ i }}][{{ i2 }}][type]" value="{{ field.type }}" disabled><input
+                                placeholder="Długość"  name="db_table[{{ i }}][{{ i2 }}][length]" value="{{ field.length }}" disabled>
+                    </div>
+                {% endfor %}
+                <br>
+            </div>
+        {% endfor %}
+    </form>
+</main>

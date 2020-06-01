@@ -206,12 +206,6 @@ li:hover{
     height: 100%;
 }
 
-.main__users__list{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: auto;
-}
-
 .main__users__list section{
     display: grid;
     grid-template-columns: 1fr 11fr;
@@ -240,10 +234,11 @@ li:hover{
     color: #ccc;
 }
 
-.main__sql{
+.main__sql form{
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 11fr 1fr;
+    height: 100vh;
 }
 
 .main__sql textarea{
@@ -379,4 +374,54 @@ td{
     background-color: #d1ecf1;
     border: 2px solid #bee5eb;
     color: #0c5460;
+}
+
+.main__sql > div{
+    padding-left: 15px;
+}
+
+.main__sql p{
+    color: #eee;
+}
+
+.main__sql ul li{
+    border: none;
+    font-size: inherit;
+    display: inline-block;
+    height: inherit;
+}
+
+.main__sql ul li a{
+    display: block;
+}
+
+.main__sql ul li:hover{
+    background-color: inherit;
+    color: #999;
+}
+
+.main__users__permissions label{
+    color: red;
+}
+
+.main__users__permissions input:checked + label{
+    color: green;
+}
+
+.main__users__permissions form{
+    display: block;
+    padding-left: 15px;
+}
+
+.main__users__permissions label{
+    display: block;
+    padding-top: 15px;
+}
+
+.main__users__permissions button{
+    height: 25px;
+    width: 100px;
+    font-size: 12px;
+    border: 0;
+    margin-top: 15px;
 }

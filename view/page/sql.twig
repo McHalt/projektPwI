@@ -1,4 +1,19 @@
-<main class="main__sql">
-    <textarea placeholder="Wpisz tu zapytanie..."></textarea>
-    <button>Wykonaj</button>
-</main>
+{% if pageVars.args.0 matches '/^\\d+$/' %}
+    <main class="main__sql">
+        <form action="/sql/{{ pageVars.args.0 }}/exec" method="POST">
+            <textarea placeholder="Wpisz tu zapytanie..." name="query"></textarea>
+            <button>Wykonaj</button>
+        </form>
+    </main>
+{% else %}
+    <main class="main__sql">
+        <div>
+            <p>Wybierz bazę z listy:</p>
+            {% for db in pageVars.dbList %}
+            <ul>
+                <li><a href="/sql/{{ db.id }}">{{ db.name }}</a></li>
+            </ul>
+            {% endfor %}
+        </div>
+    </main>
+{% endif %}
