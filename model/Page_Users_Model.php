@@ -67,14 +67,16 @@ class Page_Users_Model extends Page_Model
     {
         $info = parent::getDbList();
         if(!empty($_GET['args'])) {
-            foreach ($info as $key => $db) {
-                $qryRes = $this->db->query(
-                    'SELECT * FROM users_to_databases WHERE user_id = :user AND database_id = :db',
-                    [':user', ':db'],
-                    [explode('/', $_GET['args'])[1], $db['id']],
-                    [PDO::PARAM_INT, PDO::PARAM_INT]
-                );
-                $info[$key]['permissions'] = empty($qryRes) ? 0 : 1;
+            if(count(explode('/', $_GET['args'])) > 1) {
+                foreach ($info as $key => $db) {
+                    $qryRes = $this->db->query(
+                        'SELECT * FROM users_to_databases WHERE user_id = :user AND database_id = :db',
+                        [':user', ':db'],
+                        [explode('/', $_GET['args'])[1], $db['id']],
+                        [PDO::PARAM_INT, PDO::PARAM_INT]
+                    );
+                    $info[$key]['permissions'] = empty($qryRes) ? 0 : 1;
+                }
             }
         }
         return $info;
