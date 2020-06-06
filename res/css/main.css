@@ -425,3 +425,20 @@ td{
     border: 0;
     margin-top: 15px;
 }
+
+.main__404{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main__404{
+    color: #ddd;
+    font-size: 35px;
+}
+
+.main__404 img{
+    max-width: 100%;
+    max-height: 80vh;
+}
